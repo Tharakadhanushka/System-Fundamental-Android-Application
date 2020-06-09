@@ -1,0 +1,48 @@
+<ion-header>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <!-- jst style -->
+    
+    <!-- <ng-container *ngIf="!locateDatas || locateDatas.length == 0">
+      <div *ngFor="let n of [0,1]" padding>
+        <p>
+            <ion-skeleton-text></ion-skeleton-text>
+            <ion-skeleton-text class="shortSkel"></ion-skeleton-text>
+        </p>
+      </div>
+    </ng-container> -->
+
+    <!-- <ng-container *ngIf=" locateDatas.length != 0">
+      <ion-item >
+        there is value
+      </ion-item>
+    </ng-container> -->
+    <ion-item-sliding *ngFor="let l of locateData"  >
+      <ion-item lines="inset" style="height:40%; width: auto;">
+        <ion-label>
+         Latitude :  {{ l.glatitude }} Longitude : {{ l.glongitude }}<br>
+         Description : {{ l.description }}
+        </ion-label>
+        <!-- <p>{{ l.description }}</p> -->
+        <ion-content>
+          <div *ngIf="l.imgsrc">
+              <img [src]="l.imgsrc" *ngIf="l.imgsrc" style="width: 100%; float: right;" />
+          </div>
+            <div [hidden]="l.imgsrc">
+              <p><ion-spinner name="lines-small"></ion-spinner></p>
+            </div>
+        </ion-content>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option (click)="remove(l)" color="success">
+          Cleaned
+          <ion-icon name="send" slot="end"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+      
+    </ion-item-sliding>
+    
+  </ion-list>
+</ion-content>

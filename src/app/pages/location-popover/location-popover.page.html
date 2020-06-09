@@ -1,0 +1,14 @@
+
+<!-- PopOver Compounent using ion-card -->
+
+<div *ngIf="dataStatusNeg" padding color="success">
+    <ion-icon name="warning"></ion-icon>
+    Trash Cleaned
+  </div>
+<div *ngIf="!dataStatusNeg">
+  <img [src]="imgs"  style="width: 100%;" />
+  <ion-button size="small" color="danger" (click)="cleanTrash()" expand="block">
+    <ion-icon name="trash"></ion-icon>Clean</ion-button>
+</div>
+
+  

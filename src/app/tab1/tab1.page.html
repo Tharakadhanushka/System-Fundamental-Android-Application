@@ -1,0 +1,43 @@
+<ion-header>
+
+</ion-header>
+
+<ion-content>
+  <ion-fab vertical="top" horizontal="start"  slot="fixed"  >
+    <ion-chip color="primary" padding style="margin-left: 10%;">
+      <ion-icon name="people" size="large" ></ion-icon>
+      <ion-label color="primary" > {{ userID }} </ion-label>
+    </ion-chip>
+
+  </ion-fab>
+
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content color="primary"
+      refreshingSpinner="lines"
+      ></ion-refresher-content>
+    </ion-refresher>
+    <div *ngIf="noDataRecord">
+      <ion-card padding color="danger">
+          <ion-icon size="large" name="warning" style="margin-left: 45%;" ></ion-icon>
+          <br>
+      <ion-card-subtitle style="margin-left: 15%;">
+          No Trash Location Reported
+          </ion-card-subtitle>
+      </ion-card>
+    </div>
+    
+    <div id='map_canvas' >
+
+    </div>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="!isTracking">
+      <ion-fab-button color="success" (click)="startTracking()" >
+        <ion-icon name="logo-model-s"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="isTracking">
+      <ion-fab-button color="danger" (click)="stopTracking()" >
+        <ion-icon name="hand"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+
+</ion-content>
